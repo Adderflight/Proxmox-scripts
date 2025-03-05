@@ -62,11 +62,10 @@ if [[ ! -f /home/adderflight/commafeed/${APP}_version.txt ]] || [[ "${RELEASE}" 
   msg_ok "Stopped ${APP}"
 
   msg_info "Updating ${APP} to ${RELEASE}"
-  wget -q https://github.com/Athou/commafeed/releases/download/${RELEASE}/commafeed-${RELEASE}-h2-linux-x86_64-runner
-  #unzip -q commafeed-${RELEASE}-h2-jvm.zip
-  chmod +x commafeed-${RELEASE}-h2-linux-x86_64-runner
-  rsync -a --exclude 'data/' commafeed-${RELEASE}-h2-linux-x86_64-runner /home/adderflight/commafeed
-  rm -rf commafeed-${RELEASE}-h2-linux-x86_64-runner
+  wget https://github.com/Athou/commafeed/releases/download/${RELEASE}/commafeed-${RELEASE}-h2-linux-x86_64-runner
+  cp /home/adderflight/commafeed-${RELEASE}-h2-linux-x86_64-runner /home/adderflight/commafeed/commafeed-h2-linux-x86_64-runner
+  chmod +x /home/adderflight/commafeed/commafeed-h2-linux-x86_64-runner
+  rm -f /home/adderflight/commafeed-${RELEASE}-h2-linux-x86_64-runner
   echo "${RELEASE}" >/home/adderflight/commafeed/${APP}_version.txt
   msg_ok "Updated ${APP} to ${RELEASE}"
 
